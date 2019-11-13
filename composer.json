@@ -1,0 +1,51 @@
+{
+  "name": "motor-cms/motor-docs",
+  "description": "Motor documentation package",
+  "license": "MIT",
+  "keywords": [
+    "motor"
+  ],
+  "authors": [
+    {
+      "name": "Reza Esmaili",
+      "email": "me@dfox.info"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "fideloper/proxy": "^4.0",
+    "laravel/framework": "^6.0",
+    "laravel/tinker": "^1.0",
+    "predis/predis": "^1.1"
+  },
+  "require-dev": {
+    "facade/ignition": "^1.4",
+    "fzaninotto/faker": "^1.4",
+    "mockery/mockery": "^1.0",
+    "nunomaduro/collision": "^3.0"
+  },
+  "autoload": {
+    "files": [
+      "src/helpers/documentation.php"
+    ],
+    "psr-4": {
+      "Motor\\Docs\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Motor\\Core\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Motor\\Docs\\Providers\\MotorDocsServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
