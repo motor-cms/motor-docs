@@ -1,12 +1,23 @@
 <?php
 
+/**
+ * Simple method to crawl all potential packages and paths for documentation files
+ * Not great but works
+ *
+ * @return array
+ */
 function getAllDocumentationFiles()
 {
     // Get local and scoped view paths from all packages
     $app      = app();
     $paths    = $app['view']->getFinder()->getPaths();
     $hints    = $app['view']->getFinder()->getHints();
+
+    // Add local paths to hint paths
+    $hints['local'] = $paths;
+
     $fileList = [];
+
 
     foreach ($hints as $package => $paths) {
         foreach ($paths as $path) {
@@ -27,6 +38,12 @@ function getAllDocumentationFiles()
     return $fileList;
 }
 
+/**
+ * Find the requested page replace links with the correct route
+ *
+ * @param $file
+ * @return mixed|string
+ */
 function documentation($file)
 {
     // Get local and scoped view paths from all packages

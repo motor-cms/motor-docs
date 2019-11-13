@@ -18,9 +18,21 @@ class MotorDocsServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->publishAssets();
         $this->routes();
         $this->views();
         $this->documentation();
+    }
+
+
+    /**
+     * Publish public assets (css/js)
+     */
+    public function publishAssets()
+    {
+        $this->publishes([
+            __DIR__.'/../../public' => public_path(),
+        ], 'motor-docs');
     }
 
 

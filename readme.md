@@ -9,6 +9,10 @@ You can install this package via composer using this command:
 composer require motor-cms/motor-docs
 ```
 
+Publish the necessary assets (just a css and a js file)
+```bash
+php artisan vendor:publish --tag=motor-docs
+```
 
 ### Configuration
 Next, create a file 'motor-docs.php' in your config directory
@@ -22,9 +26,10 @@ return [
     'logo'      => 'images/motor-logo-white-cropped.png',
     'copyright' => 'Reza Esmaili',
     'packages' => [
-        'motor-docs' => [
+        'motor-docs' => [ // this should match with your package name. use 'local' for the main app
+            'position'   => 1, // sets the sorting position for this package
             'name'       => 'Motor-Docs',
-            'navigation' => '_navigation'
+            'navigation' => '_navigation' // name of your sidebar navigation markdown file
         ]
     ]
 
@@ -38,9 +43,10 @@ Repeat for your other packages. It is safe to only include the 'packages' array.
 <?php
 return [
     'packages' => [
-        'second-package' => [
+        'second-package' => [ // this should match with your package name. use 'local' for the main app
+            'position'   => 2, // sets the sorting position for this package
             'name'       => 'Second package',
-            'navigation' => '_navigation'
+            'navigation' => '_navigation' // name of your sidebar navigation markdown file
         ]
     ]
 ];
@@ -61,11 +67,18 @@ The package will automatically render a navigation tree defined in your _navigat
 
 Have fun!
 
+### Reading your docs
+
+By default, your docs are available at https://[HOST]/documentation
+You can change the route in your main motor-docs.php config file.
+
 ### Todo
 
 * ajax search
 * Better docs (lol)
-* More configuration options
+* Information on how to build the assets with laravel mix
+* <s>Include assets and add publish method to the ServiceProvider</s>
+* <s>Sort documentation packages by position</s>
 
 ## Credits
 
