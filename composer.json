@@ -18,7 +18,7 @@
   },
   "autoload": {
     "files": [
-      "src/helpers/documentation.php"
+      "helpers/motor-docs-helpers.php"
     ],
     "psr-4": {
       "Motor\\Docs\\": "src"
