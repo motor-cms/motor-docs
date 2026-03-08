@@ -6,15 +6,11 @@ use Illuminate\Support\ServiceProvider;
 
 /**
  * Class MotorDocsServiceProvider
- * @package Motor\Docs\Providers
  */
 class MotorDocsServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -23,7 +19,6 @@ class MotorDocsServiceProvider extends ServiceProvider
         $this->views();
         $this->documentation();
     }
-
 
     /**
      * Publish public assets (css/js)
@@ -35,7 +30,6 @@ class MotorDocsServiceProvider extends ServiceProvider
         ], 'motor-docs');
     }
 
-
     /**
      * Merge documentation items from configuration file
      */
@@ -46,17 +40,15 @@ class MotorDocsServiceProvider extends ServiceProvider
             array_replace_recursive(require __DIR__.'/../../config/motor-docs.php', $config));
     }
 
-
     /**
      * Set routes
      */
     public function routes()
     {
-        if ( ! $this->app->routesAreCached()) {
+        if (! $this->app->routesAreCached()) {
             require __DIR__.'/../../routes/web.php';
         }
     }
-
 
     /**
      * Set view path

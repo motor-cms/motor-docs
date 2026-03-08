@@ -9,19 +9,18 @@
 function getAllDocumentationFiles()
 {
     // Get local and scoped view paths from all packages
-    $app      = app();
-    $paths    = $app['view']->getFinder()->getPaths();
-    $hints    = $app['view']->getFinder()->getHints();
+    $app = app();
+    $paths = $app['view']->getFinder()->getPaths();
+    $hints = $app['view']->getFinder()->getHints();
 
     // Add local paths to hint paths
     $hints['local'] = $paths;
 
     $fileList = [];
 
-
     foreach ($hints as $package => $paths) {
         foreach ($paths as $path) {
-            $path  = str_replace('/views', '/documentation', $path);
+            $path = str_replace('/views', '/documentation', $path);
             if (is_dir($path)) {
                 $files = scandir($path);
                 foreach ($files as $file) {
@@ -35,19 +34,19 @@ function getAllDocumentationFiles()
             }
         }
     }
+
     return $fileList;
 }
 
 /**
  * Find the requested page replace links with the correct route
  *
- * @param $file
  * @return mixed|string
  */
 function documentation($file)
 {
     // Get local and scoped view paths from all packages
-    $app   = app();
+    $app = app();
     $paths = $app['view']->getFinder()->getPaths();
     $hints = $app['view']->getFinder()->getHints();
 
