@@ -12,7 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
     <!-- Theme CSS -->
-    <link id="theme-style" href="{{mix('css/motor-docs.css')}}" rel="stylesheet">
+    @vite(['packages/motor-docs/resources/assets/sass/motor-docs.scss'])
 </head>
 
 <body class="body-blue">
@@ -67,7 +67,7 @@
                 Riley</a> for developers</small>
     </div><!--//container-->
 </footer><!--//footer-->
-<script type="text/javascript" src="{{mix('js/motor-docs.js')}}"></script>
+@vite(['packages/motor-docs/resources/assets/js/motor-docs.js'])
 <script>
     // Simple navigation highlighting
     var url = document.location.href;
